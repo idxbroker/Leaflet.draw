@@ -5,7 +5,7 @@
 
 	<link rel="stylesheet" href="libs/leaflet.css" />
 	<link rel="stylesheet" href="../dist/leaflet.draw.css" />
-	
+
 
 	<script src="libs/leaflet-src.js"></script>
 
@@ -79,7 +79,9 @@
 			},
 			edit: {
 				featureGroup: drawnItems,
-				remove: false
+				remove: true,
+				metric: false,
+				showRadius: true
 			}
 		});
 		map.addControl(drawControl);
