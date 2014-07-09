@@ -19,9 +19,12 @@ L.EditToolbar = L.Toolbar.extend({
 				fillOpacity: 0.1,
 
 				// Whether to user the existing layers color
-				maintainColor: false
-			}
+				maintainColor: false,
+			},
+
 		},
+		metric: true,
+		showRadius: false,
 		remove: {},
 		featureGroup: null /* REQUIRED! TODO: perhaps if not set then all layers on the map are selectable? */
 	},
@@ -39,6 +42,14 @@ L.EditToolbar = L.Toolbar.extend({
 			options.remove = L.extend({}, this.options.remove, options.remove);
 		}
 
+		if (typeof options.metric === 'undefined') {
+			options.metric = this.options.metric;
+		}
+
+		if (typeof options.showRadius === 'undefined') {
+			options.showRadius = this.options.showRadius;
+		}
+
 		this._toolbarClass = 'leaflet-draw-edit';
 		L.Toolbar.prototype.initialize.call(this, options);
 
@@ -52,7 +63,9 @@ L.EditToolbar = L.Toolbar.extend({
 				enabled: this.options.edit,
 				handler: new L.EditToolbar.Edit(map, {
 					featureGroup: featureGroup,
-					selectedPathOptions: this.options.edit.selectedPathOptions
+					selectedPathOptions: this.options.edit.selectedPathOptions,
+					metric: this.options.metric,
+					showRadius:this.options.showRadius
 				}),
 				title: L.drawLocal.edit.toolbar.buttons.edit
 			},
