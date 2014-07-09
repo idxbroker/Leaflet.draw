@@ -1560,6 +1560,10 @@ L.Rectangle.addInitHook(function () {
 L.Edit = L.Edit || {};
 
 L.Edit.Circle = L.Edit.SimpleShape.extend({
+	options: {
+		showRadius: true,
+		metric: true
+	},
 	_createMoveMarker: function () {
 		var center = this._shape.getLatLng();
 
@@ -2360,6 +2364,8 @@ L.EditToolbar = L.Toolbar.extend({
 				fillOpacity: 0.1
 			}
 		},
+		metric: true,
+		showRadius: false,
 		remove: {},
 		featureGroup: null /* REQUIRED! TODO: perhaps if not set then all layers on the map are selectable? */
 	},
@@ -2377,6 +2383,14 @@ L.EditToolbar = L.Toolbar.extend({
 			options.remove = L.extend({}, this.options.remove, options.remove);
 		}
 
+		if (typeof options.metric === 'undefined') {
+			options.metric = this.options.metric;
+		}
+
+		if (typeof options.showRadius === 'undefined') {
+			options.showRadius = this.options.showRadius;
+		}
+
 		this._toolbarClass = 'leaflet-draw-edit';
 		L.Toolbar.prototype.initialize.call(this, options);
 
@@ -2390,7 +2404,9 @@ L.EditToolbar = L.Toolbar.extend({
 				enabled: this.options.edit,
 				handler: new L.EditToolbar.Edit(map, {
 					featureGroup: featureGroup,
-					selectedPathOptions: this.options.edit.selectedPathOptions
+					selectedPathOptions: this.options.edit.selectedPathOptions,
+					metric: this.options.metric,
+					showRadius: this.options.showRadius
 				}),
 				title: L.drawLocal.edit.toolbar.buttons.edit
 			},
@@ -2507,6 +2523,9 @@ L.EditToolbar.Edit = L.Handler.extend({
 
 		// Store the selectable layer group for ease of access
 		this._featureGroup = options.featureGroup;
+
+		this._metric = options.metric;
+		this._showRadius = options.showRadius;
 
 		if (!(this._featureGroup instanceof L.FeatureGroup)) {
 			throw new Error('options.featureGroup must be a L.FeatureGroup');
@@ -2735,6 +2754,26 @@ L.EditToolbar.Edit = L.Handler.extend({
 
 	_onMouseMove: function (e) {
 		this._tooltip.updatePosition(e.latlng);
+		// only for one layer and  the layer is a circle
+		if (this._hasAvailableLayers()) {
+			var size = 0,
+				layer;
+			for (var layerID in this._featureGroup._layers) {
+				if (this._featureGroup._layers.hasOwnProperty(layerID)) {
+					layer = this._featureGroup._layers[layerID];
+					size++;
+				}
+			}
+			if (size === 1 && layer && layer._mRadius) {
+				var radius = layer.getRadius().toFixed(1);
+
+				this._tooltip.updateContent({
+					text: 'Drag handle to resize',
+					subtext: this._showRadius ? 'Radius: ' + L.GeometryUtil.readableDistance(radius, this._metric) : ''
+				});
+			}
+		}
+
 	},
 
 	_hasAvailableLayers: function () {

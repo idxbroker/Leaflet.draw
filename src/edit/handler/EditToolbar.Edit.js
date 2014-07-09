@@ -245,10 +245,10 @@ L.EditToolbar.Edit = L.Handler.extend({
 	_onMouseMove: function (e) {
 		this._tooltip.updatePosition(e.latlng);
 		// only for one layer and  the layer is a circle
-		if (this._featureGroup && this._featureGroup._layers) {
+		if (this._hasAvailableLayers()) {
 			var size = 0,
 				layer;
-			for(var layerID in this._featureGroup._layers) {
+			for (var layerID in this._featureGroup._layers) {
 				if (this._featureGroup._layers.hasOwnProperty(layerID)) {
 					layer = this._featureGroup._layers[layerID];
 					size++;

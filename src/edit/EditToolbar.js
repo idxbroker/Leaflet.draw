@@ -57,7 +57,7 @@ L.EditToolbar = L.Toolbar.extend({
 					featureGroup: featureGroup,
 					selectedPathOptions: this.options.edit.selectedPathOptions,
 					metric: this.options.metric,
-					showRadius:this.options.showRadius
+					showRadius: this.options.showRadius
 				}),
 				title: L.drawLocal.edit.toolbar.buttons.edit
 			},
