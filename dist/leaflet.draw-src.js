@@ -2765,7 +2765,8 @@ L.EditToolbar.Edit = L.Handler.extend({
 				}
 			}
 			if (size === 1 && layer && layer._mRadius) {
-				var radius = layer.getRadius().toFixed(1);
+				var radius = parseFloat(layer.getRadius());
+				radius = radius.toFixed(1);
 
 				this._tooltip.updateContent({
 					text: 'Drag handle to resize',
