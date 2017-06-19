@@ -1,5 +1,9 @@
 L.Edit = L.Edit || {};
-
+/**
+ * @class L.Edit.Circle
+ * @aka Edit.Circle
+ * @inherits L.Edit.SimpleShape
+ */
 L.Edit.Circle = L.Edit.SimpleShape.extend({
 	options: {
 		showRadius: true,
@@ -34,6 +38,8 @@ L.Edit.Circle = L.Edit.SimpleShape.extend({
 
 		// Move the circle
 		this._shape.setLatLng(latlng);
+
+		this._map.fire(L.Draw.Event.EDITMOVE, { layer: this._shape });
 	},
 
 	_resize: function (latlng) {
@@ -41,6 +47,8 @@ L.Edit.Circle = L.Edit.SimpleShape.extend({
 			radius = moveLatLng.distanceTo(latlng);
 
 		this._shape.setRadius(radius);
+
+		this._map.fire(L.Draw.Event.EDITRESIZE, { layer: this._shape });
 	}
 });
 
