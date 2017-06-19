@@ -20,8 +20,9 @@ L.EditToolbar = L.Toolbar.extend({
 				fillOpacity: 0.1,
 
 				// Whether to user the existing layers color
-				maintainColor: false
-			}
+				maintainColor: false,
+			},
+
 		},
 		metric: true,
 		showRadius: false,
@@ -50,7 +51,7 @@ L.EditToolbar = L.Toolbar.extend({
 
 		if (typeof options.showRadius === 'undefined') {
 			options.showRadius = this.options.showRadius;
-        }
+    }
 
 		if (options.poly) {
 			options.poly = L.extend({}, this.options.poly, options.poly);

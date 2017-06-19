@@ -2747,6 +2747,7 @@ L.Map.TouchExtend = L.Handler.extend({
 L.Map.addInitHook('addHandler', 'touchExtend', L.Map.TouchExtend);
 
 
+
 /**
  * @class L.Marker.Touch
  * @aka Marker.Touch
@@ -3886,7 +3887,7 @@ L.EditToolbar = L.Toolbar.extend({
 				fillOpacity: 0.1,
 
 				// Whether to user the existing layers color
-				maintainColor: false
+				maintainColor: false,
 			}
 		},
 		metric: true,

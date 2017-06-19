@@ -292,7 +292,7 @@ L.EditToolbar.Edit = L.Handler.extend({
 				});
 			}
 		}
-    },
+  },
 
 	_onTouchMove: function (e) {
 		var touchEvent = e.originalEvent.changedTouches[0],
