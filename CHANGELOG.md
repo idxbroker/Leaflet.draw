@@ -5,19 +5,84 @@ Leaflet.draw Changelog
 
 An in-progress version being developed on the master branch.
 
+## 0.4.2 (November 7, 2016)
+
 ### Improvements
 
- * Restrict editing polygons so that at least 3 points are present. (by [@Zverik](https://github.com/Zverik). [#200](https://github.com/Leaflet/Leaflet.draw/pull/200)
- * Tooltips initially start hidden until the mouse has been moved. (by [@Zverik](https://github.com/Zverik). [#210](https://github.com/Leaflet/Leaflet.draw/pull/210)
- * Fixup spelling errors. (by [@nexushoratio](https://github.com/nexushoratio). [#223](https://github.com/Leaflet/Leaflet.draw/pull/223)
- * Combine ie specific style within leaflet.draw.css stylesheet. (by [@frankrowe](https://github.com/frankrowe). [#221](https://github.com/Leaflet/Leaflet.draw/pull/221)
- * Improve my terrible engrish. (by [@erictheise](https://github.com/erictheise). [#237](https://github.com/Leaflet/Leaflet.draw/pull/237)
-  * Fire `editstart` events when a poly or simple shape is initially edited. (by [@atombender](https://github.com/atombender). [#245](https://github.com/Leaflet/Leaflet.draw/pull/245)
+ * Documentation is now automatically generated
+ * L.Draw.Event is new, has all events in string format
+
+### Bugfixes
+
+ * Travis tests
+
+## 0.4.1 (October 21, 2016)
+ 
+### Bugfixes
+
+ * fix markers becomming invisible when in edit mode
+ * Fix linking for EditPolyOptions
+ * Fixes very minor issue in readme with invalid variable name
+
+## 0.4.0 (October 13, 2016)
+
+### Improvements
+
+ * Add support for Leaflet 1.0.0+
+
+### Bugfixes
+
+ * New L.Draw.Tooltip to mitigate L.Tooltip collision
+ 
+### Potential Issues
+
+ * Several namespace changes, see BREAKINGCHANGES.md
+ * Cross support for both 0.7.0 and 1.0.0
+
+## 0.3.0 (March 09, 2016)
+
+### Improvements
+
+ * Add support for touch devices
+ * Corrected license
+ * Linter
+
+### Bugfixes
+
+ * Added mouse handlers
+ * Fixed event listener leaks in Polyline
+ * Edit vertex event
+
+## 0.2.4 (February 04, 2014)
+
+### Improvements
+
+ * Add support for toolbar touch styles. (by [@alanshaw](https://github.com/alanshaw)). [#269](https://github.com/Leaflet/Leaflet.draw/pull/269 )
+ * Add support for maintaining a layers color when entering edit mode.
+ * Add support for showing area when drawing a rectangle.
+ * Refactor marker editing to bring in line with path editing handlers. Decouple setting editing style from edit toolbar. (by [@manleyjster](https://github.com/manleyjster)). [#323](https://github.com/Leaflet/Leaflet.draw/pull/323)
+ * Prevent skewing on selected edit marker. (by [@kyletolle](https://github.com/kyletolle)). [#341](https://github.com/Leaflet/Leaflet.draw/pull/341)
+ * Add support for changing the 'Radius' label text.
+
+### Bugfixes
+
+ * Fix deleted layers LayerGroup constructor type. (by [@w8r ](https://github.com/w8r )). [#334](https://github.com/Leaflet/Leaflet.draw/pull/334)
+
+## 0.2.3 (January 14, 2014)
+
+### Improvements
+
+ * Restrict editing polygons so that at least 3 points are present. (by [@Zverik](https://github.com/Zverik)). [#200](https://github.com/Leaflet/Leaflet.draw/pull/200)
+ * Tooltips initially start hidden until the mouse has been moved. (by [@Zverik](https://github.com/Zverik)). [#210](https://github.com/Leaflet/Leaflet.draw/pull/210)
+ * Fixup spelling errors. (by [@nexushoratio](https://github.com/nexushoratio)). [#223](https://github.com/Leaflet/Leaflet.draw/pull/223)
+ * Combine ie specific style within leaflet.draw.css stylesheet. (by [@frankrowe](https://github.com/frankrowe)). [#221](https://github.com/Leaflet/Leaflet.draw/pull/221)
+ * Improve my terrible engrish. (by [@erictheise](https://github.com/erictheise)). [#237](https://github.com/Leaflet/Leaflet.draw/pull/237)
+ * Fire `editstart` events when a poly or simple shape is initially edited. (by [@atombender](https://github.com/atombender)). [#245](https://github.com/Leaflet/Leaflet.draw/pull/245)
  * Add ability to add a new vertex to a polyline or polygon hander.
- * Added ability to remove/undo the last placed point for polyline or polygons. (by [@Zverik](https://github.com/Zverik). [#242](https://github.com/Leaflet/Leaflet.draw/pull/242)
- * Dynamically position the action toolbars. (by [@DevinClark](https://github.com/DevinClark). [#240](https://github.com/Leaflet/Leaflet.draw/pull/240)
- * Improve polyline/polygon drawing by accepting some motion on click. (by [@atombender](https://github.com/atombender). [#249](https://github.com/Leaflet/Leaflet.draw/pull/249)
- * Only draw a limited number of guide dashes to improve performance in some rare cases.
+ * Added ability to remove/undo the last placed point for polyline or polygons. (by [@Zverik](https://github.com/Zverik)). [#242](https://github.com/Leaflet/Leaflet.draw/pull/242)
+ * Dynamically position the action toolbars. (by [@DevinClark](https://github.com/DevinClark)). [#240](https://github.com/Leaflet/Leaflet.draw/pull/240)
+ * Improve polyline/polygon drawing by accepting some motion on click. (by [@atombender](https://github.com/atombender)). [#249](https://github.com/Leaflet/Leaflet.draw/pull/249)
+ * Only draw a limited number of guide dashes to improve performance in some rare cases. [#254](https://github.com/Leaflet/Leaflet.draw/pull/254)
 
 ### Bugfixes
 
@@ -25,8 +90,8 @@ An in-progress version being developed on the master branch.
  * Fixed path middle marker positions. (by [@Zverik](https://github.com/Zverik)). [#208](https://github.com/Leaflet/Leaflet.draw/pull/208)
  * Fix issue where toolbar buttons would have focus after clicked so couldn't use escape to cancel until clicked map at least once.
  * Fix toolbar icons for retina displays. (by [@dwnoble](https://github.com/dwnoble)). [#217](https://github.com/Leaflet/Leaflet.draw/pull/217)
- * Ensure that options are not shared between draw handler classes. (by [@yohanboniface](https://github.com/yohanboniface). [#219](https://github.com/Leaflet/Leaflet.draw/pull/219)
- * Fix bug where multiple handlers could be active. (by [@manubb](https://github.com/manubb). [#247](https://github.com/Leaflet/Leaflet.draw/pull/247)
+ * Ensure that options are not shared between draw handler classes. (by [@yohanboniface](https://github.com/yohanboniface)). [#219](https://github.com/Leaflet/Leaflet.draw/pull/219)
+ * Fix bug where multiple handlers could be active. (by [@manubb](https://github.com/manubb)). [#247](https://github.com/Leaflet/Leaflet.draw/pull/247)
 
 ## 0.2.2 (October 4, 2013)
 
@@ -103,7 +168,7 @@ Major new version. Added Edit toolbar which allows editing and deleting shapes.
  * Added 'drawing' event fired on the map when a draw handler is actived. (by [@ajbeaven](https://github.com/thegreat)). [#30](https://github.com/jacobtoye/Leaflet.draw/pull/30)
 
 ### Bugfixes
- 
+
  * Stopped L.Control.Draw from storing handlers in it's prototype. (by [@thegreat](https://github.com/thegreat)). [#37](https://github.com/jacobtoye/Leaflet.draw/pull/37)
 
 ## 0.1.4 (October 8, 2012)

@@ -1,4 +1,12 @@
+/**
+ * @class L.DrawToolbar
+ * @aka Toolbar
+ */
 L.DrawToolbar = L.Toolbar.extend({
+
+	statics: {
+		TYPE: 'draw'
+	},
 
 	options: {
 		polyline: {},
@@ -8,6 +16,7 @@ L.DrawToolbar = L.Toolbar.extend({
 		marker: {}
 	},
 
+	// @method initialize(): void
 	initialize: function (options) {
 		// Ensure that the options are merged correctly since L.extend is only shallow
 		for (var type in this.options) {
@@ -22,6 +31,8 @@ L.DrawToolbar = L.Toolbar.extend({
 		L.Toolbar.prototype.initialize.call(this, options);
 	},
 
+	// @method getModeHandlers(): object
+	// Get mode handlers information
 	getModeHandlers: function (map) {
 		return [
 			{
@@ -52,9 +63,17 @@ L.DrawToolbar = L.Toolbar.extend({
 		];
 	},
 
-	// Get the actions part of the toolbar
+	// @method getActions(): object
+	// Get action information
 	getActions: function (handler) {
 		return [
+			{
+				enabled: handler.completeShape,
+				title: L.drawLocal.draw.toolbar.finish.title,
+				text: L.drawLocal.draw.toolbar.finish.text,
+				callback: handler.completeShape,
+				context: handler
+			},
 			{
 				enabled: handler.deleteLastVertex,
 				title: L.drawLocal.draw.toolbar.undo.title,
@@ -71,6 +90,8 @@ L.DrawToolbar = L.Toolbar.extend({
 		];
 	},
 
+	// @method setOptions(): void
+	// Sets the options to the toolbar
 	setOptions: function (options) {
 		L.setOptions(this, options);
 
