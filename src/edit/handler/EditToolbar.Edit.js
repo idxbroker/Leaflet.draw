@@ -285,7 +285,7 @@ L.EditToolbar.Edit = L.Handler.extend({
 			if (size === 1 && layer && layer._mRadius) {
 				var radius = parseFloat(layer.getRadius());
 				radius = radius.toFixed(1);
-
+				var metric = this._metric ? 'metric' : null;
 				this._tooltip.updateContent({
 					text: 'Drag handle to resize',
 					subtext: this._showRadius ? 'Radius: ' + L.GeometryUtil.readableDistance(radius, this._metric) : ''

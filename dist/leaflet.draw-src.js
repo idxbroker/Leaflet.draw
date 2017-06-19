@@ -1,5 +1,5 @@
 /*
- Leaflet.draw 0.4.9+ec1a275, a plugin that adds drawing and editing tools to Leaflet powered maps.
+ Leaflet.draw 0.4.9+19a4092, a plugin that adds drawing and editing tools to Leaflet powered maps.
  (c) 2012-2017, Jacob Toye, Jon West, Smartrak, Leaflet
 
  https://github.com/Leaflet/Leaflet.draw
@@ -8,7 +8,7 @@
 (function (window, document, undefined) {/**
  * Leaflet.draw assumes that you have already included the Leaflet library.
  */
-L.drawVersion = "0.4.9+ec1a275";
+L.drawVersion = "0.4.9+19a4092";
 /**
  * @class L.Draw
  * @aka Draw
@@ -4355,7 +4355,7 @@ L.EditToolbar.Edit = L.Handler.extend({
 			if (size === 1 && layer && layer._mRadius) {
 				var radius = parseFloat(layer.getRadius());
 				radius = radius.toFixed(1);
-
+				var metric = this._metric ? 'metric' : null;
 				this._tooltip.updateContent({
 					text: 'Drag handle to resize',
 					subtext: this._showRadius ? 'Radius: ' + L.GeometryUtil.readableDistance(radius, this._metric) : ''
